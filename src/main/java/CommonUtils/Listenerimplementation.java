@@ -24,6 +24,7 @@ public class Listenerimplementation implements ITestListener {
 		String methodname = result.getMethod().getMethodName();
 		Reporter.log("Testscript execution is started",true);
 		test=report.createTest(methodname);
+		
 	}
 
 	@Override
@@ -42,10 +43,13 @@ public class Listenerimplementation implements ITestListener {
 		String methodname = result.getMethod().getMethodName();
 		//Reporter.log("Testscript is failed"+message,true);
 		test.log(Status.FAIL, methodname+"Testscript is failed");
+		String screenshotname = methodname;
 		test.log(Status.FAIL, result.getThrowable());
 		WebDriverUtils wutil = new WebDriverUtils();
 		try {
-			wutil.totakescreenshot(BaseClass.sdriver, "Contact");
+			String path = wutil.totakescreenshot(BaseClass.sdriver, screenshotname);
+			//To add screenshot to extent report
+			test.addScreenCaptureFromPath(path);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -76,8 +80,9 @@ public class Listenerimplementation implements ITestListener {
 	@Override
 	public void onStart(ITestContext context) {
 		// TODO Auto-generated method stub
+		JavaUtils jutils = new JavaUtils();
 		
-		ExtentSparkReporter htmlreport = new ExtentSparkReporter("./ExtentReport/Report.html");
+		ExtentSparkReporter htmlreport = new ExtentSparkReporter("./ExtentReport/Report.html"+jutils.getRandomnumber());
 		htmlreport.config().setDocumentTitle("VtigerCRM Framework");
 		htmlreport.config().setReportName("VtigerCRM");
 		htmlreport.config().setTheme(Theme.DARK);

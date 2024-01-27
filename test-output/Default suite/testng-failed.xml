@@ -10,8 +10,8 @@
           <include name="BC"/>
           <include name="BS"/>
           <include name="AM"/>
-          <include name="CreateLead"/>
           <include name="BM"/>
+          <include name="CreateLead"/>
         </methods>
       </class> <!-- Module.CreateLeadTest -->
     </classes>
