@@ -40,7 +40,7 @@ public class CreateLeadTest extends BaseClass {
 		
 		
 					
-				//Step7:Click on Leads
+			//Step7:Click on Leads
 				driver.findElement(By.xpath("//a[text()='Leads']")).click();
 				
 			//Step8:Click on +(Create Leads..) icon
@@ -70,6 +70,7 @@ public class CreateLeadTest extends BaseClass {
 			driver.findElement(By.name("button")).click();	
 			
 			Thread.sleep(4000);
+			
 		
 		
 		
